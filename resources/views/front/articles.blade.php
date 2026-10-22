@@ -267,7 +267,7 @@
         currentItems.forEach(item => {
             const artTitle = item.title.startsWith('Training') ? item.title : `Training Energy ${item.title}`;
             const fullTitle = `${artTitle} di ${currentRegionName}`;
-            const artSlug = (item.slug || ('training-coating-energi-' + item.index)) + '-di-' + (currentRegionName.toLowerCase().replace(/[^a-z0-9]+/g, '-'));
+            const artSlug = (item.slug || ('training-energy-' + item.index)) + '-di-' + (currentRegionName.toLowerCase().replace(/[^a-z0-9]+/g, '-'));
             
             // Build dynamic route link
             const linkUrl = currentKabkotSlug 

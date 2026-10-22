@@ -3,6 +3,9 @@
 /public/storage
 /public/hot
 /storage/*.key
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*
 .env
 .env.backup
 .env.production

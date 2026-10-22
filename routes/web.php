@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\ContactController;
 Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/tentang-kami', [FrontController::class, 'about'])->name('about');
 Route::get('/program', [FrontController::class, 'programs'])->name('programs');
+Route::get('/api/programs', [FrontController::class, 'apiPrograms'])->name('api.programs');
 Route::get('/program/{slug}', [FrontController::class, 'programDetail'])->name('program.detail');
 Route::get('/artikel', [FrontController::class, 'articles'])->name('articles');
 Route::get('/artikel/{slug}', [FrontController::class, 'articleDetail'])->name('article.detail');

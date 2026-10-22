@@ -120,7 +120,9 @@ class FrontController extends Controller
     {
         $programs = Program::where('is_active', true)
             ->orderBy('sort_order')
+            ->limit(6)
             ->get();
+        $totalPrograms = Program::where('is_active', true)->count();
 
         // 3 Cards Limited Articles
         $articles = Article::where('is_published', true)
@@ -164,6 +166,7 @@ class FrontController extends Controller
 
         return view('front.index', compact(
             'programs',
+            'totalPrograms',
             'articles',
             'statistics',
             'heroSlides',
@@ -194,12 +197,92 @@ class FrontController extends Controller
      */
     public function programs()
     {
-        $programs = Program::where('is_active', true)->orderBy('sort_order')->get();
+        $programs = Program::where('is_active', true)->orderBy('sort_order')->limit(9)->get();
+        $totalPrograms = Program::where('is_active', true)->count();
         $provinces = RegionService::getAllProvinces();
         $waLink = $this->getWaLink('Indonesia');
         $waNumbers = $this->get4WaHotlines('Indonesia');
 
-        return view('front.programs', compact('programs', 'provinces', 'waLink', 'waNumbers'));
+        return view('front.programs', compact('programs', 'totalPrograms', 'provinces', 'waLink', 'waNumbers'));
+    }
+
+    /**
+     * API: Paginated Programs with JS Fetch
+     */
+    public function apiPrograms(Request $request)
+    {
+        $perPage = (int) $request->input('per_page', 6);
+        if ($perPage < 1 || $perPage > 50) {
+            $perPage = 6;
+        }
+
+        $query = Program::where('is_active', true);
+
+        if ($request->filled('search')) {
+            $search = trim($request->input('search'));
+            $query->where(function($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('short_description', 'like', "%{$search}%")
+                  ->orWhere('level_name', 'like', "%{$search}%")
+                  ->orWhere('badge', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->filled('category') && $request->input('category') !== 'all') {
+            $cat = trim($request->input('category'));
+            $query->where(function($q) use ($cat) {
+                $q->where('level_name', 'like', "%{$cat}%")
+                  ->orWhere('title', 'like', "%{$cat}%");
+            });
+        }
+
+        $paginator = $query->orderBy('sort_order')->paginate($perPage);
+
+        $mainWa = Setting::get('whatsapp', '081399810272');
+        $cleanWa = preg_replace('/[^0-9]/', '', $mainWa);
+        if (str_starts_with($cleanWa, '0')) {
+            $cleanWa = '62' . substr($cleanWa, 1);
+        }
+
+        $data = $paginator->getCollection()->map(function ($p) use ($cleanWa) {
+            $waMsg = "Halo Admin Training Energy, saya ingin konsultasi pendaftaran resmi program {$p->title}. Mohon info jadwal batch terbaru dan silabus teknis.";
+            $desc = $p->short_description ?: strip_tags($p->full_description ?? '');
+            if (mb_strlen($desc) > 130) {
+                $desc = mb_substr($desc, 0, 127) . '...';
+            }
+            $target = is_array($p->target_audience) ? implode(', ', $p->target_audience) : ($p->target_audience ?: 'Engineer Rekayasa Energi, Teknisi Pembangkit, Safety Officer K3 Listrik');
+            if (mb_strlen($target) > 75) {
+                $target = mb_substr($target, 0, 72) . '...';
+            }
+
+            return [
+                'id' => $p->id,
+                'title' => $p->title,
+                'slug' => $p->slug,
+                'badge' => $p->badge ?: 'Sertifikasi Kompetensi',
+                'level_name' => $p->level_name ?: 'Rekayasa Energi Industri',
+                'duration' => $p->duration ?: '3 Hari (Teori & Simulasi)',
+                'method' => $p->method ?: 'Tatap Muka & In-House',
+                'short_description' => $desc,
+                'target_audience' => $target,
+                'image' => $p->image ?: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop&q=80',
+                'detail_url' => route('program.detail', $p->slug),
+                'wa_url' => "https://api.whatsapp.com/send?phone={$cleanWa}&text=" . urlencode($waMsg)
+            ];
+        });
+
+        return response()->json([
+            'success' => true,
+            'data' => $data,
+            'pagination' => [
+                'current_page' => $paginator->currentPage(),
+                'per_page' => $paginator->perPage(),
+                'total' => $paginator->total(),
+                'last_page' => $paginator->lastPage(),
+                'from' => $paginator->firstItem() ?? 0,
+                'to' => $paginator->lastItem() ?? 0,
+            ]
+        ]);
     }
 
     /**

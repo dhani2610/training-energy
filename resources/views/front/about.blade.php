@@ -30,13 +30,13 @@
                 <div>
                     <span class="section-tag" style="background: #f5f3ff; color: #9a3412; font-size: 0.76rem; font-weight: 800; padding: 4px 12px; border-radius: 20px; text-transform: uppercase;">Sejarah Kami</span>
                     <h2 class="section-title" style="font-size: 1.85rem; margin: 10px 0 18px;">
-                        Pelopor Layanan Pengerjaan Teknisi Energy & Coating & Keahlian Training Energy di Seluruh Indonesia
+                        Pusat Unggulan Pelatihan & Sertifikasi Training Energy Terlengkap di Indonesia
                     </h2>
                     <p style="font-size: 0.92rem; color: #475569; line-height: 1.7; margin-bottom: 14px;">
                         Operasi keselamatan kerja sumur migas, panas bumi (geothermal), pertambangan mineral, dan eksplorasi air tanah dalam merupakan industri berisiko tinggi yang menuntut presisi teknis, pemahaman hidrolika formasi batuan, dan kepatuhan mutlak pada standar keselamatan kerja internasional.
                     </p>
                     <p style="font-size: 0.92rem; color: #475569; line-height: 1.7; margin-bottom: 20px;">
-                        Didirikan oleh konsorsium praktisi senior spesialis proteksi korosi, coating inspector berstandar internasional (NACE / AMPP & SSPC), serta ahli teknik material permukaan terkemuka, <strong>Training Energy</strong> hadir memberikan solusi pengerjaan rekayasa energi dan proteksi korosi berkualitas tinggi di seluruh 38 provinsi Indonesia.
+                        Didirikan oleh konsorsium praktisi senior spesialis rekayasa energi, lead auditor ISO 50001, dan electrical power engineer terkemuka, <strong>Training Energy</strong> hadir menyelenggarakan pelatihan dan sertifikasi kompetensi energi berstandar internasional di seluruh 38 provinsi Indonesia.
                     </p>
                     <div style="display: flex; gap: 18px; flex-wrap: wrap;">
                         <div style="background: #f5f3ff; border-left: 4px solid #1d4ed8; padding: 12px 18px; border-radius: 0 8px 8px 0;">
@@ -77,7 +77,7 @@
                         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem; color: #475569;">
                             <li style="display: flex; align-items: flex-start; gap: 8px;">
                                 <i class="bi bi-check-circle-fill" style="color: #1d4ed8; font-size: 1rem; margin-top: 2px;"></i>
-                                <span>Menyelenggarakan layanan pengerjaan dan inspeksi kompetensi teknisi energi & coating berlisensi resmi dengan standar keselamatan kerja industri energi tertinggi.</span>
+                                <span>Menyelenggarakan pelatihan dan sertifikasi kompetensi auditor energi & teknisi sistem daya berlisensi resmi dengan standar industri tertinggi.</span>
                             </li>
                             <li style="display: flex; align-items: flex-start; gap: 8px;">
                                 <i class="bi bi-check-circle-fill" style="color: #1d4ed8; font-size: 1rem; margin-top: 2px;"></i>

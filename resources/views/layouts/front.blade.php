@@ -1763,10 +1763,10 @@
             <nav class="navbar">
                 <a href="{{ route('home') }}" class="brand-logo">
                     <div class="brand-icon">
-                        <i class="bi bi-shield-check"></i>
+                        <i class="bi bi-lightning-charge-fill"></i>
                     </div>
                     <div class="brand-text">
-                        <h1>TRAINING <span>COATING ENERGY</span></h1>
+                        <h1>TRAINING <span>ENERGY</span></h1>
                     </div>
                 </a>
 
@@ -1816,14 +1816,14 @@
                 <div class="footer-col">
                     <div class="brand-logo" style="margin-bottom: 14px;">
                         <div class="brand-icon">
-                            <i class="bi bi-shield-check"></i>
+                            <i class="bi bi-lightning-charge-fill"></i>
                         </div>
                         <div class="brand-text">
-                            <h3 style="font-size: 0.98rem; font-weight: 800; color: #fff;">TRAINING <span style="color: var(--accent-mint);">COATING ENERGY PAINTING</span></h3>
+                            <h3 style="font-size: 0.98rem; font-weight: 800; color: #fff;">TRAINING <span style="color: #c084fc;">ENERGY INDONESIA</span></h3>
                         </div>
                     </div>
                     <p class="footer-desc">
-                        Pusat pelatihan dan sertifikasi kompetensi proteksi korosi industri di Indonesia: Training Operator Power Engineering & Energy Efficiency Sa 2.5 Sa 3, Aplikator K3 Listrik & Proteksi Sistem Tenaga, Sistem Manajemen Energi ISO 50001 QA/QC NACE & SSPC, Hydroenergi UHP, serta Internal Tank Lining & Pipe Coating.
+                        Pusat pelatihan dan sertifikasi kompetensi manajemen energi industri di Indonesia: Sistem Manajemen Energi ISO 50001, Mitigasi Harmonisa IEEE 519, Instrumentasi & Kalibrasi, Programmable Logic Controllers (PLC), serta Keselamatan K3 Listrik NFPA 70E.
                     </p>
                     <div style="margin-bottom: 16px;">
                         <span style="font-size: 0.76rem; color: #a855f7; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 6px;">Hotline Utama Layanan:</span>
@@ -1837,8 +1837,8 @@
                     <h4>Program Training Unggulan</h4>
                     <ul class="footer-links">
                         <li><a href="{{ route('program.detail', 'training-operator-energi-abrasive') }}">Training Operator Power Engineering & Energy Efficiency Sa 2.5 Sa 3</a></li>
-                        <li><a href="{{ route('program.detail', 'training-aplikator-protective-coating-daya listrik') }}">Training Aplikator K3 Listrik & Proteksi Sistem Tenaga</a></li>
-                        <li><a href="{{ route('program.detail', 'training-coating-inspector-qc-proteksi-korosi') }}">Training Sistem Manajemen Energi ISO 50001 QA/QC NACE</a></li>
+                        <li><a href="{{ route('program.detail', 'training-power-quality-and-energy-efficiency') }}">Training Power Quality & Energy Efficiency</a></li>
+                        <li><a href="{{ route('program.detail', 'training-instrumentation-and-calibration') }}">Training Sistem Manajemen Energi ISO 50001</a></li>
                         <li><a href="{{ route('program.detail', 'training-hydroenergi-waterjetting-uhp') }}">Training Hydroenergi & UHP Waterjetting</a></li>
                         <li><a href="{{ route('programs') }}">Lihat Seluruh 8 Program Training Industri</a></li>
                     </ul>
@@ -1894,7 +1894,7 @@
                 </div>
                 <div class="wa-header-info">
                     <div class="wa-header-title">Customer Care Training Energy | Spesialis Proteksi Korosi & Rekayasa Energi Resmi</div>
-                    <div class="wa-header-subtitle">Konsultasi Teknis Energy, K3 Listrik & Proteksi Sistem Tenaga & Coating Inspection 24/7</div>
+                    <div class="wa-header-subtitle">Konsultasi Teknis Manajemen Energi, K3 Listrik & Keandalan Sistem Daya 24/7</div>
                 </div>
                 <button type="button" class="wa-close-btn" id="waCloseBtn" aria-label="Tutup"><i class="bi bi-x-lg"></i></button>
             </div>
@@ -1905,7 +1905,7 @@
                 </div>
                 
                 <!-- Card CS Utama (081399810272) -->
-                <a href="https://api.whatsapp.com/send?phone=6281399810272&text={{ urlencode('Halo Admin Utama Training Energy, saya ingin konsultasi penawaran teknis pengerjaan abrasive energi dan protective coating.') }}" target="_blank" class="wa-contact-card wa-primary-card">
+                <a href="https://api.whatsapp.com/send?phone=6281399810272&text={{ urlencode('Halo Admin Utama Training Energy, saya ingin konsultasi pendaftaran resmi program sertifikasi manajemen energi dan sistem daya.') }}" target="_blank" class="wa-contact-card wa-primary-card">
                     <div class="wa-contact-avatar">
                         <i class="bi bi-patch-check-fill"></i>
                     </div>
@@ -1935,7 +1935,7 @@
                 </a>
 
                 <!-- Card CS 2 (087894580806) -->
-                <a href="https://api.whatsapp.com/send?phone=6287894580806&text={{ urlencode('Halo Tim Teknis Training Energy, saya ingin konsultasi spesifikasi teknis pengerjaan energi, coating protective, dan coating inspection.') }}" target="_blank" class="wa-contact-card">
+                <a href="https://api.whatsapp.com/send?phone=6287894580806&text={{ urlencode('Halo Tim Teknis Training Energy, saya ingin konsultasi spesifikasi teknis pelatihan ISO 50001, IEEE 519, dan sertifikasi energi.') }}" target="_blank" class="wa-contact-card">
                     <div class="wa-contact-avatar">
                         <i class="bi bi-book-half"></i>
                     </div>
@@ -1944,7 +1944,7 @@
                             <span class="wa-contact-name">0878-9458-0806</span>
                             <span class="wa-contact-badge">Spesifikasi Teknis</span>
                         </div>
-                        <div class="wa-contact-desc">Spesifikasi Teknis ISO 50001, IEEE, Energy & Coating Inspection</div>
+                        <div class="wa-contact-desc">Spesifikasi Teknis ISO 50001, IEEE 519 & K3 Listrik</div>
                     </div>
                     <i class="bi bi-whatsapp wa-icon-direct"></i>
                 </a>

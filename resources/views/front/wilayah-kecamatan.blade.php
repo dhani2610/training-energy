@@ -173,7 +173,7 @@
                 <span class="section-tag">Panduan Training Energy</span>
                 <h2 class="section-title">Daftar Direktori Panduan Lengkap Training Energy di Kecamatan {{ $kecamatanData['name'] }}</h2>
                 <p class="section-desc" style="margin-left: 0;">
-                    Kumpulan panduan modul mendalam mencakup standar kompetensi teknisi energi & coating, prosedur penutupan sumur cepat (shut-in), sistem pengendalian tekanan sumur (Manajemen Risiko K3), pengujian BOP bertekanan tinggi, dan keselamatan tempat kerja di Kecamatan {{ $kecamatanData['name'] }}, {{ $kecamatanData['kabkot']['name'] }}:
+                    Kumpulan modul mendalam mencakup standar audit energi ISO 50001, mitigasi harmonisa IEEE 519, keselamatan K3 listrik NFPA 70E, dan keandalan sistem pembangkit di Kecamatan {{ $kecamatanData['name'] }}, {{ $kecamatanData['kabkot']['name'] }}:
                 </p>
             </div>
 

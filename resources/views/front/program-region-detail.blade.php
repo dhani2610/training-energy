@@ -1,7 +1,7 @@
 @extends('layouts.front')
 
 @section('title', $program['title'] . ' di ' . $regionName . ' | Direktori Panduan & Sertifikasi Proteksi Korosi')
-@section('meta_description', 'Program pelatihan resmi, estimasi biaya investasi, dan silabus materi ' . $program['title'] . ' di ' . $regionName . '. Sertifikasi resmi kompetensi teknisi coating & energi berstandar internasional. Hubungi 081399810272.')
+@section('meta_description', 'Program pelatihan resmi, estimasi biaya investasi, dan silabus materi ' . $program['title'] . ' di ' . $regionName . '. Sertifikasi resmi kompetensi manajemen energi & sistem daya berstandar internasional. Hubungi 081399810272.')
 
 @section('content')
 
@@ -27,7 +27,7 @@
 
             <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 14px; flex-wrap: wrap;">
                 <span class="hero-badge" style="margin-bottom: 0;">
-                    <i class="bi bi-award-fill"></i> {{ $program['level_name'] ?? 'Training Energy & Teknisi Energy & Coating' }}
+                    <i class="bi bi-award-fill"></i> {{ $program['level_name'] ?? 'Training Energy & Rekayasa Sistem Daya' }}
                 </span>
                 <span class="hero-badge" style="margin-bottom: 0; background: rgba(37, 99, 235, 0.2); border-color: #38bdf8; color: #c084fc;">
                     <i class="bi bi-geo-alt-fill"></i> {{ $regionName }}
@@ -42,7 +42,7 @@
             </h1>
 
             <p class="hero-lead" style="margin-left: 0; max-width: 900px; margin-bottom: 22px;">
-                Penyedia program training pengerjaan protective coating, abrasive energi, dan inspeksi mutu coating QA/QC untuk berbagai fasilitas industri di wilayah {{ $regionName }}. Dilengkapi prosedur kerja berstandar internasional ISO 50001, IEEE, dan ISO.
+                Pusat pelatihan resmi manajemen energi terbarukan, audit daya listrik ISO 50001, dan rekayasa keandalan sistem pembangkit di wilayah {{ $regionName }}. Dilengkapi prosedur kerja berstandar internasional ISO 50001, IEEE, dan ISO.
             </p>
 
             <div class="hero-cta" style="justify-content: flex-start; margin-bottom: 0;">

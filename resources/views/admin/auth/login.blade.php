@@ -191,7 +191,7 @@
                 <label class="form-label">Email Administrator *</label>
                 <div class="input-group">
                     <i class="bi bi-envelope"></i>
-                    <input type="email" name="email" id="email" class="form-control" value="{{ old('email', 'admin@trainingcoatingenergidaya listrik.my.id') }}" required placeholder="admin@trainingcoatingenergidaya listrik.my.id">
+                    <input type="email" name="email" id="email" class="form-control" value="{{ old('email', 'admin@trainingenergy.my.id') }}" required placeholder="admin@trainingenergy.my.id">
                 </div>
             </div>
 
@@ -216,7 +216,7 @@
 
         <div class="demo-box">
             <div><strong>Akun Default:</strong></div>
-            <div style="margin-top: 2px;">Email: <code>admin@trainingcoatingenergidaya listrik.my.id</code></div>
+            <div style="margin-top: 2px;">Email: <code>admin@trainingenergy.my.id</code></div>
             <div>Password: <code>admin123</code></div>
             <button type="button" class="btn-fill-demo" onclick="fillDemo()">
                 <i class="bi bi-magic"></i> Isi Otomatis
@@ -226,7 +226,7 @@
 
     <script>
         function fillDemo() {
-            document.getElementById('email').value = 'admin@trainingcoatingenergidaya listrik.my.id';
+            document.getElementById('email').value = 'admin@trainingenergy.my.id';
             document.getElementById('password').value = 'admin123';
         }
     </script>

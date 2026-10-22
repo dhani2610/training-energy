@@ -17,7 +17,7 @@
             </h1>
 
             <p class="hero-lead" style="max-width: 820px; margin: 0 auto; color: #cbd5e1; font-size: 1rem; line-height: 1.7;">
-                Konsultasikan kebutuhan layanan pengerjaan sertifikasi Training Energy & Teknisi Energy & Coating individu maupun proposal pelatihan dan sertifikasi industri perusahaan di seluruh 38 provinsi Indonesia bersama konsultan resmi kami.
+                Konsultasikan kebutuhan layanan pengerjaan sertifikasi Training Energy & Rekayasa Sistem Daya individu maupun proposal pelatihan dan sertifikasi industri perusahaan di seluruh 38 provinsi Indonesia bersama konsultan resmi kami.
             </p>
         </div>
     </section>
@@ -85,7 +85,7 @@
                                     <i class="bi bi-journal-check"></i>
                                 </div>
                                 <div style="flex-grow: 1;">
-                                    <div style="font-size: 0.72rem; color: #c084fc; text-transform: uppercase; font-weight: 700; letter-spacing: 0.3px;">Hotline 3 (Spesifikasi Teknis ISO 50001, IEEE, QA/QC & Coating Inspection)</div>
+                                    <div style="font-size: 0.72rem; color: #c084fc; text-transform: uppercase; font-weight: 700; letter-spacing: 0.3px;">Hotline 3 (Spesifikasi Teknis ISO 50001, IEEE 519 & K3 Listrik)</div>
                                     <div style="font-size: 1rem; font-weight: 800; color: #ffffff;">0878-9458-0806</div>
                                 </div>
                                 <i class="bi bi-chevron-right" style="color: #c084fc; font-size: 0.85rem;"></i>
@@ -112,7 +112,7 @@
                                 </div>
                                 <div>
                                     <div style="font-size: 0.70rem; color: #94a3b8; text-transform: uppercase; font-weight: 700;">Email Resmi:</div>
-                                    <div style="font-size: 0.88rem; font-weight: 700; color: #ffffff;">info@trainingcoatingenergidaya listrik.my.id</div>
+                                    <div style="font-size: 0.88rem; font-weight: 700; color: #ffffff;">info@trainingenergy.my.id</div>
                                 </div>
                             </div>
                             <div style="display: flex; align-items: center; gap: 12px;">

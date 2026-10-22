@@ -1,6 +1,6 @@
 @extends('layouts.front')
 
-@section('title', 'Training Energy Provinsi ' . $province['name'] . ' | Sertifikasi Training Energy & Teknisi Energy & Coating')
+@section('title', 'Training Energy Provinsi ' . $province['name'] . ' | Sertifikasi Training Energy & Rekayasa Sistem Daya')
 @section('meta_description', 'Pusat informasi dan pendaftaran resmi Training Energy (Training Proteksi Korosi & Rekayasa Energi & Manajemen Risiko K3) di Provinsi ' . $province['name'] . '. Hubungi 081399810272.')
 
 @section('content')
@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="program-body">
-                            <div class="program-level">{{ $progObj->level_name ?? 'Training Energy & Teknisi Energy & Coating' }}</div>
+                            <div class="program-level">{{ $progObj->level_name ?? 'Training Energy & Rekayasa Sistem Daya' }}</div>
                             <h3 class="program-title">{{ $progObj->title }}</h3>
                             <p class="program-desc">
                                 {{ Str::limit($progObj->short_description ?? ($progObj->full_description ?? ''), 125) }}

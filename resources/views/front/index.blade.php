@@ -205,7 +205,7 @@
                                 <a href="https://api.whatsapp.com/send?phone=6281399810272&text={{ urlencode('Halo Admin Training Energy, saya ingin informasi modul manajemen risiko HIRADC dan investigasi insiden SCAT.') }}" target="_blank" class="btn-primary-green" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);">
                                     <i class="bi bi-whatsapp"></i> Konsultasi HIRADC: 0813-9981-0272
                                 </a>
-                                <a href="{{ route('program.detail', 'training-coating-inspector-qc-proteksi-korosi') }}" class="btn-outline-white">
+                                <a href="{{ route('program.detail', 'training-instrumentation-and-calibration') }}" class="btn-outline-white">
                                     <i class="bi bi-shield-exclamation"></i> Detail Modul HIRADC
                                 </a>
                             </div>
@@ -302,7 +302,7 @@
                             <i class="bi bi-file-earmark-check-fill"></i>
                         </div>
                         <h3 style="font-size: 1.12rem; font-weight: 800; color: #0a0e1a; margin-bottom: 8px;">166 Kriteria Audit SMK3 & ISO 45001</h3>
-                        <p style="font-size: 0.88rem; color: #475569; line-height: 1.6; margin: 0;">Metodologi pengerjaan dirancang komprehensif mengacu pada standar mutu internasional ISO 50001, IEEE 519, SSPC, serta NACE/AMPP untuk ketahanan korosi jangka panjang.</p>
+                        <p style="font-size: 0.88rem; color: #475569; line-height: 1.6; margin: 0;">Metodologi pengerjaan dirancang komprehensif mengacu pada standar mutu internasional ISO 50001, IEEE 519, SSPC, serta standar IEC/IEEE untuk efisiensi energi dan keandalan sistem daya.</p>
                     </div>
 
                     <!-- Card 2 -->
@@ -355,18 +355,43 @@
         </div>
     </section>
 
-    <!-- 10 PROGRAM RESMI K3 CORPORATE -->
-    <section class="section-py" id="program" style="background: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+    <!-- 120 PROGRAM RESMI TRAINING ENERGY (PAGINATED VIA JS FETCH) -->
+    <section class="section-py" id="program" style="background: #f8fafc; border-bottom: 1px solid #e2e8f0; scroll-margin-top: 80px;">
         <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-                <span class="section-tag">Skema Layanan Pengerjaan & Sertifikasi Resmi</span>
-                <h2 class="section-title">10 Program Unggulan Training Energy</h2>
+            <div class="section-header" style="text-align: center; margin-bottom: 30px;">
+                <span class="section-tag">Katalog Program Pelatihan & Sertifikasi Resmi</span>
+                <h2 class="section-title">120 Program Keahlian Training Energy</h2>
                 <p class="section-desc" style="max-width: 780px; margin: 0 auto;">
-                    Program komprehensif yang dirancang untuk menjawab kebutuhan kepatuhan hukum, audit sertifikasi, dan perlindungan optimal aset serta tenaga kerja perusahaan:
+                    Program komprehensif berstandar regulasi internasional ISO 50001, IEEE 519, dan NFPA 70E. Temukan kurikulum yang Anda butuhkan melalui filter dan pencarian instan di bawah:
                 </p>
             </div>
 
-            <div class="programs-grid">
+            <!-- SEARCH & FILTER CONTROLS -->
+            <div class="program-filter-bar" style="max-width: 980px; margin: 0 auto 34px; background: #ffffff; padding: 22px 24px; border-radius: 18px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(37, 99, 235, 0.06);">
+                <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 16px; flex-wrap: wrap;">
+                    <div style="position: relative; flex: 1; min-width: 260px;">
+                        <i class="bi bi-search" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #64748b; font-size: 1rem;"></i>
+                        <input type="text" id="programSearchInput" placeholder="Cari dari 120 program (contoh: Instrumentation, Life Cycle, PLC, ISO 50001)..." style="width: 100%; padding: 11px 40px 11px 42px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 0.92rem; outline: none; transition: all 0.2s;" onfocus="this.style.borderColor='#2563eb'; this.style.boxShadow='0 0 0 3px rgba(37,99,235,0.15)'" onblur="this.style.borderColor='#cbd5e1'; this.style.boxShadow='none'">
+                        <button type="button" id="programSearchClear" style="display: none; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1.1rem;"><i class="bi bi-x-circle-fill"></i></button>
+                    </div>
+                    <div id="programCountInfo" style="font-size: 0.85rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 10px 16px; border-radius: 10px; border: 1px solid #bfdbfe; white-space: nowrap;">
+                        Menampilkan 1 - 6 dari {{ $totalPrograms ?? 120 }} Program
+                    </div>
+                </div>
+
+                <!-- CATEGORY PILLS -->
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;" id="programCategoryPills">
+                    <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-right: 4px;">Kategori:</span>
+                    <button type="button" class="prog-cat-btn active" data-cat="all" style="padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; border: 1px solid #2563eb; background: linear-gradient(135deg, #2563eb, #7c3aed); color: #fff; cursor: pointer; transition: all 0.2s;">Semua Program</button>
+                    <button type="button" class="prog-cat-btn" data-cat="ISO 50001" style="padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; border: 1px solid #e2e8f0; background: #f8fafc; color: #475569; cursor: pointer; transition: all 0.2s;">ISO 50001 & Audit</button>
+                    <button type="button" class="prog-cat-btn" data-cat="Instrumentation" style="padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; border: 1px solid #e2e8f0; background: #f8fafc; color: #475569; cursor: pointer; transition: all 0.2s;">Instrumentasi & PLC</button>
+                    <button type="button" class="prog-cat-btn" data-cat="Power" style="padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; border: 1px solid #e2e8f0; background: #f8fafc; color: #475569; cursor: pointer; transition: all 0.2s;">Kelistrikan & Daya</button>
+                    <button type="button" class="prog-cat-btn" data-cat="Turbin" style="padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; border: 1px solid #e2e8f0; background: #f8fafc; color: #475569; cursor: pointer; transition: all 0.2s;">Pembangkit & Turbin</button>
+                </div>
+            </div>
+
+            <!-- PROGRAMS GRID -->
+            <div class="programs-grid" id="programsGridContainer" style="position: relative; min-height: 420px; transition: opacity 0.2s ease;">
                 @foreach($programs as $prog)
                     <div class="program-card">
                         <div class="program-img-wrapper">
@@ -375,15 +400,15 @@
                         </div>
 
                         <div class="program-body">
-                            <div class="program-level">{{ $prog->level_name ?? 'Jenjang Korporasi Utama' }}</div>
+                            <div class="program-level">{{ $prog->level_name ?? 'Rekayasa Energi Industri' }}</div>
                             <h3 class="program-title">{{ $prog->title }}</h3>
                             <p class="program-desc">
                                 {{ Str::limit($prog->short_description ?? ($prog->full_description ?? ''), 130) }}
                             </p>
 
                             <div class="program-meta">
-                                <div><i class="bi bi-clock-history" style="color: #2563eb;"></i> {{ $prog->duration ?? '12 Hari' }}</div>
-                                <div><i class="bi bi-mortarboard-fill" style="color: #2563eb;"></i> {{ $prog->method ?? 'In-House & Public' }}</div>
+                                <div><i class="bi bi-clock-history" style="color: #2563eb;"></i> {{ $prog->duration ?? '3 Hari' }}</div>
+                                <div><i class="bi bi-mortarboard-fill" style="color: #2563eb;"></i> {{ $prog->method ?? 'Tatap Muka & In-House' }}</div>
                             </div>
 
                             <div class="program-footer-btn">
@@ -395,6 +420,9 @@
                     </div>
                 @endforeach
             </div>
+
+            <!-- PAGINATION CONTROLS -->
+            <div id="programsPaginationWrapper" style="display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 40px; flex-wrap: wrap;"></div>
         </div>
     </section>
 
@@ -425,7 +453,7 @@
                 <span class="section-tag">Kemitraan Korporasi Nasional</span>
                 <h2 class="section-title">Dipercaya Pemimpin Industri & Korporasi Multinasional</h2>
                 <p class="section-desc" style="max-width: 760px; margin: 0 auto;">
-                    Kami bangga mendampingi implementasi perlindungan korosi industri, pelatihan juru energi, sertifikasi operator coating, dan inspeksi daya listrik di berbagai perusahaan terkemuka di Indonesia:
+                    Kami bangga mendampingi implementasi audit energi ISO 50001, sertifikasi manajer & auditor energi, serta peningkatan keandalan sistem daya listrik di berbagai perusahaan terkemuka:
                 </p>
             </div>
 
@@ -1087,5 +1115,232 @@
             }
         });
     });
+
+    // ==========================================
+    // JS PAGINATION & SEARCH FOR 120 PROGRAMS
+    // ==========================================
+    let currentProgPage = 1;
+    const progPerPage = 6;
+    let currentProgSearch = '';
+    let currentProgCategory = 'all';
+    let progSearchDebounceTimer = null;
+
+    const progGridContainer = document.getElementById('programsGridContainer');
+    const progPaginationWrapper = document.getElementById('programsPaginationWrapper');
+    const progSearchInput = document.getElementById('programSearchInput');
+    const progSearchClear = document.getElementById('programSearchClear');
+    const progCountInfo = document.getElementById('programCountInfo');
+
+    async function fetchPaginatedPrograms(page = 1, isManual = false) {
+        if (!progGridContainer) return;
+        currentProgPage = page;
+
+        // Skeleton Loader
+        progGridContainer.style.opacity = '0.4';
+        
+        try {
+            const params = new URLSearchParams({
+                page: page,
+                per_page: progPerPage,
+                search: currentProgSearch,
+                category: currentProgCategory
+            });
+
+            const response = await fetch(`/api/programs?${params.toString()}`);
+            const result = await response.json();
+
+            if (result.success) {
+                renderProgramsGrid(result.data);
+                renderProgramsPagination(result.pagination);
+                if (progCountInfo) {
+                    if (result.pagination.total === 0) {
+                        progCountInfo.textContent = 'Tidak ada program ditemukan';
+                    } else {
+                        progCountInfo.textContent = `Menampilkan ${result.pagination.from} - ${result.pagination.to} dari ${result.pagination.total} Program`;
+                    }
+                }
+                
+                if (isManual) {
+                    const section = document.getElementById('program');
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            }
+        } catch (err) {
+            console.error('Error fetching programs:', err);
+        } finally {
+            progGridContainer.style.opacity = '1';
+        }
+    }
+
+    function renderProgramsGrid(items) {
+        if (!progGridContainer) return;
+
+        if (!items || items.length === 0) {
+            progGridContainer.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #ffffff; border-radius: 16px; border: 1px dashed #cbd5e1;">
+                    <div style="font-size: 2.5rem; color: #94a3b8; margin-bottom: 12px;"><i class="bi bi-search"></i></div>
+                    <h4 style="font-size: 1.15rem; font-weight: 800; color: #0a0e1a; margin-bottom: 6px;">Program Tidak Ditemukan</h4>
+                    <p style="font-size: 0.88rem; color: #64748b; margin-bottom: 18px;">Tidak ada pelatihan yang cocok dengan kata kunci "${escapeHtml(currentProgSearch)}".</p>
+                    <button type="button" onclick="resetProgramSearch()" style="background: linear-gradient(135deg, #2563eb, #7c3aed); color: #fff; border: none; padding: 8px 18px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; cursor: pointer;">
+                        Reset Pencarian
+                    </button>
+                </div>
+            `;
+            return;
+        }
+
+        let html = '';
+        items.forEach(prog => {
+            html += `
+                <div class="program-card">
+                    <div class="program-img-wrapper">
+                        <img src="${escapeHtml(prog.image)}" alt="${escapeHtml(prog.title)}" class="program-img" loading="lazy">
+                        <span class="program-badge">${escapeHtml(prog.badge)}</span>
+                    </div>
+
+                    <div class="program-body">
+                        <div class="program-level">${escapeHtml(prog.level_name)}</div>
+                        <h3 class="program-title">${escapeHtml(prog.title)}</h3>
+                        <p class="program-desc">
+                            ${escapeHtml(prog.short_description)}
+                        </p>
+
+                        <div class="program-meta">
+                            <div><i class="bi bi-clock-history" style="color: #2563eb;"></i> ${escapeHtml(prog.duration)}</div>
+                            <div><i class="bi bi-mortarboard-fill" style="color: #2563eb;"></i> ${escapeHtml(prog.method)}</div>
+                        </div>
+
+                        <div class="program-footer-btn">
+                            <a href="${escapeHtml(prog.detail_url)}" class="btn-primary-green" style="width: 100%; justify-content: center; font-size: 0.88rem; padding: 11px 16px;">
+                                <i class="bi bi-info-circle-fill"></i> Detail Layanan & Lingkup Kerja
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        progGridContainer.innerHTML = html;
+    }
+
+    function renderProgramsPagination(meta) {
+        if (!progPaginationWrapper) return;
+        if (!meta || meta.last_page <= 1) {
+            progPaginationWrapper.innerHTML = '';
+            return;
+        }
+
+        const totalPages = meta.last_page;
+        const current = meta.current_page;
+        let html = '';
+
+        // Prev Button
+        if (current > 1) {
+            html += `<button type="button" onclick="fetchPaginatedPrograms(${current - 1}, true)" style="display: flex; align-items: center; gap: 6px; padding: 8px 14px; border: 1px solid #cbd5e1; background: #ffffff; color: #1e293b; border-radius: 8px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s;"><i class="bi bi-chevron-left"></i> Prev</button>`;
+        } else {
+            html += `<button type="button" disabled style="display: flex; align-items: center; gap: 6px; padding: 8px 14px; border: 1px solid #e2e8f0; background: #f8fafc; color: #94a3b8; border-radius: 8px; font-size: 0.85rem; font-weight: 700; cursor: not-allowed;"><i class="bi bi-chevron-left"></i> Prev</button>`;
+        }
+
+        // Smart Page Numbering
+        let pages = [];
+        if (totalPages <= 7) {
+            for (let i = 1; i <= totalPages; i++) pages.push(i);
+        } else {
+            if (current <= 4) {
+                pages = [1, 2, 3, 4, 5, '...', totalPages];
+            } else if (current >= totalPages - 3) {
+                pages = [1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+            } else {
+                pages = [1, '...', current - 1, current, current + 1, '...', totalPages];
+            }
+        }
+
+        pages.forEach(p => {
+            if (p === '...') {
+                html += `<span style="padding: 8px 10px; color: #94a3b8; font-weight: 700;">...</span>`;
+            } else if (p === current) {
+                html += `<button type="button" style="padding: 8px 14px; border: none; background: linear-gradient(135deg, #2563eb, #7c3aed); color: #ffffff; border-radius: 8px; font-size: 0.85rem; font-weight: 800; box-shadow: 0 4px 12px rgba(37,99,235,0.3);">${p}</button>`;
+            } else {
+                html += `<button type="button" onclick="fetchPaginatedPrograms(${p}, true)" style="padding: 8px 14px; border: 1px solid #cbd5e1; background: #ffffff; color: #1e293b; border-radius: 8px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#eff6ff'; this.style.borderColor='#2563eb'" onmouseout="this.style.background='#ffffff'; this.style.borderColor='#cbd5e1'">${p}</button>`;
+            }
+        });
+
+        // Next Button
+        if (current < totalPages) {
+            html += `<button type="button" onclick="fetchPaginatedPrograms(${current + 1}, true)" style="display: flex; align-items: center; gap: 6px; padding: 8px 14px; border: 1px solid #cbd5e1; background: #ffffff; color: #1e293b; border-radius: 8px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s;">Next <i class="bi bi-chevron-right"></i></button>`;
+        } else {
+            html += `<button type="button" disabled style="display: flex; align-items: center; gap: 6px; padding: 8px 14px; border: 1px solid #e2e8f0; background: #f8fafc; color: #94a3b8; border-radius: 8px; font-size: 0.85rem; font-weight: 700; cursor: not-allowed;">Next <i class="bi bi-chevron-right"></i></button>`;
+        }
+
+        progPaginationWrapper.innerHTML = html;
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/[&<>"']/g, function(m) {
+            return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
+        });
+    }
+
+    window.resetProgramSearch = function() {
+        if (progSearchInput) progSearchInput.value = '';
+        if (progSearchClear) progSearchClear.style.display = 'none';
+        currentProgSearch = '';
+        currentProgCategory = 'all';
+        document.querySelectorAll('.prog-cat-btn').forEach(b => {
+            if (b.getAttribute('data-cat') === 'all') {
+                b.style.background = 'linear-gradient(135deg, #2563eb, #7c3aed)';
+                b.style.color = '#fff';
+                b.style.borderColor = '#2563eb';
+            } else {
+                b.style.background = '#f8fafc';
+                b.style.color = '#475569';
+                b.style.borderColor = '#e2e8f0';
+            }
+        });
+        fetchPaginatedPrograms(1, false);
+    };
+
+    if (progSearchInput) {
+        progSearchInput.addEventListener('input', function() {
+            const val = this.value.trim();
+            if (progSearchClear) {
+                progSearchClear.style.display = val ? 'block' : 'none';
+            }
+            clearTimeout(progSearchDebounceTimer);
+            progSearchDebounceTimer = setTimeout(() => {
+                currentProgSearch = val;
+                fetchPaginatedPrograms(1, false);
+            }, 300);
+        });
+    }
+
+    if (progSearchClear) {
+        progSearchClear.addEventListener('click', function() {
+            resetProgramSearch();
+        });
+    }
+
+    // Category button events
+    document.querySelectorAll('.prog-cat-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.prog-cat-btn').forEach(b => {
+                b.style.background = '#f8fafc';
+                b.style.color = '#475569';
+                b.style.borderColor = '#e2e8f0';
+            });
+            this.style.background = 'linear-gradient(135deg, #2563eb, #7c3aed)';
+            this.style.color = '#fff';
+            this.style.borderColor = '#2563eb';
+
+            currentProgCategory = this.getAttribute('data-cat') || 'all';
+            fetchPaginatedPrograms(1, false);
+        });
+    });
+
+    // Initialize pagination on load
+    fetchPaginatedPrograms(1, false);
+
 </script>
 @endpush

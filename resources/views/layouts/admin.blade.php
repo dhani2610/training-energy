@@ -484,7 +484,7 @@
                 <i class="bi bi-speedometer2"></i>
             </div>
             <div class="sidebar-brand-text">
-                <h2>COATING & BLASTING</h2>
+                <h2>TRAINING ENERGY</h2>
                 <p>Kontraktor & Aplikator Industri</p>
             </div>
         </div>
@@ -579,7 +579,7 @@
                     </div>
                     <div style="display: none; @media(min-width: 600px){ display:block; }">
                         <div style="font-size: 0.82rem; font-weight: 700; color: #0f172a;">{{ Auth::user()->name ?? 'Administrator' }}</div>
-                        <div style="font-size: 0.72rem; color: #64748b;">{{ Auth::user()->email ?? 'admin@trainingcoatingenergidaya listrik.my.id' }}</div>
+                        <div style="font-size: 0.72rem; color: #64748b;">{{ Auth::user()->email ?? 'admin@trainingenergy.my.id' }}</div>
                     </div>
                 </div>
             </div>
